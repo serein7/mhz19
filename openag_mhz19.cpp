@@ -13,6 +13,7 @@ Mhz19::Mhz19() {
 
 void Mhz19::begin() {
   Serial3.begin(9600);
+  Serial3.setTimeout(3000);
 }
 
 void Mhz19::update() {

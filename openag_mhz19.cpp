@@ -4,7 +4,7 @@
  */
 #include "openag_mhz19.h"
 
-Mhz19::Mhz19() : _serial(A0, A1) {
+Mhz19::Mhz19() : {
   status_level = OK;
   status_msg = "";
   _send_air_carbon_dioxide = false;
@@ -12,7 +12,7 @@ Mhz19::Mhz19() : _serial(A0, A1) {
 }
 
 void Mhz19::begin() {
-  _serial.begin(9600);
+  Serial3.begin(9600);
 }
 
 void Mhz19::update() {
@@ -32,11 +32,10 @@ bool Mhz19::get_air_carbon_dioxide(std_msgs::Int32 &msg) {
 void Mhz19::readData() {
   byte cmd[9] = {0xFF,0x01,0x86,0x00,0x00,0x00,0x00,0x00,0x79};
   unsigned char response[9];
-  
-  _serial.begin(9600);
-  _serial.write(cmd, 9);
+
+  Serial3.write(cmd, 9);
   memset(response, 0, 9);
-  _serial.readBytes(response, 9);
+  Serial3.readBytes(response, 9);
   int i;
   byte crc = 0;
   for (i = 1; i < 8; i++) crc+=response[i];

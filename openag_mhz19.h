@@ -13,7 +13,6 @@
 
 #include <openag_module.h>
 #include <std_msgs/Int32.h>
-#include <SoftwareSerial.h>
 
 /**
  * \brief Sensor module for temperature
@@ -26,7 +25,6 @@ class Mhz19 : public Module {
     bool get_air_carbon_dioxide(std_msgs::Int32 &msg);
 
   private:
-    SoftwareSerial _serial;
     bool _send_air_carbon_dioxide;
     uint32_t _co2_ppm;
     uint32_t _time_of_last_reading;

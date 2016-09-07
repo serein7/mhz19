@@ -34,7 +34,7 @@ bool Mhz19::get_air_carbon_dioxide(std_msgs::Int32 &msg) {
 
 void Mhz19::readData() {
   byte cmd[9] = {0xFF,0x01,0x86,0x00,0x00,0x00,0x00,0x00,0x79};
-  uint8_t reply[9];
+  uint8_t response[9];
 
   _serial.write(cmd, 9);
   memset(response, 0, 9);
@@ -50,7 +50,7 @@ void Mhz19::readData() {
   } else {
     unsigned int responseHigh = (unsigned int) response[2];
     unsigned int responseLow = (unsigned int) response[3];
-    _co2_ppm = (UInt32)((256*responseHigh) + responseLow);
+    _co2_ppm = (256*responseHigh) + responseLow;
     _send_air_carbon_dioxide = true;
     status_level = OK;
     status_msg = "";

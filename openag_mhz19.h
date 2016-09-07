@@ -12,7 +12,7 @@
 #endif
 
 #include <openag_module.h>
-#include <std_msgs/UInt32.h>
+#include <std_msgs/Int32.h>
 #include <SoftwareSerial.h>
 
 /**

@@ -14,7 +14,7 @@ Mhz19::Mhz19() {
 
 void Mhz19::begin() {
   Serial2.begin(9600);
-  //Serial3.setTimeout(READ_TIMEOUT);
+  Serial2.setTimeout(READ_TIMEOUT);
 }
 
 void Mhz19::update() {

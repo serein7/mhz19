@@ -22,10 +22,17 @@ void Mhz19::update() {
   }
 }
 
+bool Mhz19::get_air_carbon_dioxide(std_msgs::UInt32 &msg) {
+  msg.data = _co2_ppm;
+  bool res = _send_co2;
+  _send_co2 = false;
+  return res;
+}
+
 void Mhz19::readData() {
   byte cmd[9] = {0xFF,0x01,0x86,0x00,0x00,0x00,0x00,0x00,0x79};
   uint8_t reply[9];
-  
+
   _serial.write(cmd, 9);
   memset(response, 0, 9);
   _serial.readBytes(response, 9);
@@ -45,11 +52,4 @@ void Mhz19::readData() {
     status_level = OK;
     status_msg = "";
   }
-}
-
-bool Mhz19::get_air_carbon_dioxide(std_msgs::UInt32 &msg) {
-  msg.data = _co2_ppm;
-  bool res = _send_co2;
-  _send_co2 = false;
-  return res;
 }

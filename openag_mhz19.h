@@ -28,7 +28,7 @@ class Mhz19 : public Module {
   private:
     SoftwareSerial _serial;
     bool _send_co2;
-    UInt32 _co2_ppm;
+    uint32_t _co2_ppm;
     uint32_t _time_of_last_query;
     bool _waiting_for_conversion;
     // it seems sensor's internal logic takes co2 measure once per 6 sec

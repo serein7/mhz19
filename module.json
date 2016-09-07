@@ -4,7 +4,7 @@
     "header_file": "openag_mhz19.h",
     "outputs": {
         "air_carbon_dioxide": {
-            "type": "std_msgs/UInt32"
+            "type": "std_msgs/Int32"
         }
     },
     "dependencies": [

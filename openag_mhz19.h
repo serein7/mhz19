@@ -23,7 +23,7 @@ class Mhz19 : public Module {
     Mhz19();
     void begin();
     void update();
-    bool get_air_carbon_dioxide(std_msgs::UInt32 &msg);
+    bool get_air_carbon_dioxide(std_msgs::Int32 &msg);
 
   private:
     SoftwareSerial _serial;

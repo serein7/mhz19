@@ -14,7 +14,7 @@ Mhz19::Mhz19() {
 
 void Mhz19::begin() {
   Serial2.begin(9600);
-  Serial2.setTimeout(READ_TIMEOUT);
+  //Serial3.setTimeout(READ_TIMEOUT);
 }
 
 void Mhz19::update() {
@@ -37,7 +37,22 @@ void Mhz19::readData() {
 
   Serial2.write(cmd, 9);
   delay(10);
-  Serial2.readBytes(response, 9);
+  memset(response, 0, 9);
+  unsigned long timeout = millis() + READ_TIMEOUT;
+  uint8_t inIndex = 0;
+  bool start_received = false;
+  while ( ((int32_t)(millis() - timeout) < 0) && (inIndex < sizeof(response)/sizeof(response[0])) ) {
+    if (Serial2.available() > 0) {
+        // read 9 bytes starting from 0xff
+        byte rx = Serial2.read();
+        if (rx == 0xff || start_received) {
+          response[inIndex] =  rx;
+          start_received = true;
+          inIndex++;
+        }
+    }
+  }
+//  Serial3.readBytes(response, 9);
   int i;
   byte crc = 0;
   for (i = 1; i < 8; i++) crc+=response[i];

@@ -14,7 +14,7 @@ Mhz19::Mhz19() {
 
 void Mhz19::begin() {
   Serial3.begin(9600);
-  Serial3.setTimeout(READ_TIMEOUT);
+  //Serial3.setTimeout(READ_TIMEOUT);
 }
 
 void Mhz19::update() {
@@ -42,7 +42,7 @@ void Mhz19::readData() {
   while ( ((int32_t)(millis() - timeout) < 0) && (inIndex < sizeof(response)/sizeof(response[0])) ) {
     if (Serial3.available() > 0) {
         // read the incoming byte:
-        inData[inIndex] = Serial3.read();
+        response[inIndex] = Serial3.read();
         inIndex++;
     }
   }

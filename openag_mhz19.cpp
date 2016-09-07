@@ -51,7 +51,7 @@ void Mhz19::readData() {
     unsigned int responseHigh = (unsigned int) response[2];
     unsigned int responseLow = (unsigned int) response[3];
     _co2_ppm = (UInt32)((256*responseHigh) + responseLow);
-    _send_co2 = true;
+    _send_air_carbon_dioxide = true;
     status_level = OK;
     status_msg = "";
   }

@@ -27,7 +27,7 @@ class Mhz19 : public Module {
 
   private:
     SoftwareSerial _serial;
-    bool _send_co2;
+    bool _send_air_carbon_dioxide;
     uint32_t _co2_ppm;
     uint32_t _time_of_last_reading;
     bool _waiting_for_conversion;

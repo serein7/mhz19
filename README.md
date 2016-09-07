@@ -1,2 +1,2 @@
 # openag_mhz19
-co2 sensor
+This repo is CO2 sensor driver for MH-Z19 for OpenAg initiative

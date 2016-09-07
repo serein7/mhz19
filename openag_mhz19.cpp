@@ -4,8 +4,11 @@
  */
 #include "openag_mhz19.h"
 
-Mhz19::Mhz19() {
-  _serial = new SoftwareSerial(A0, A1);
+Mhz19::Mhz19() : _serial(A0, A1) {
+  status_level = OK;
+  status_msg = "";
+  _send_air_carbon_dioxide = false;
+  _time_of_last_reading = 0;
 }
 
 void Mhz19::begin() {

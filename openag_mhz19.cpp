@@ -14,7 +14,7 @@ Mhz19::Mhz19() : _serial(A0, A1) {
 void Mhz19::begin() {
   status_level = OK;
   status_msg = "";
-  _time_of_last_query = 0;
+  _time_of_last_reading = 0;
   _serial.begin(9600);
 }
 

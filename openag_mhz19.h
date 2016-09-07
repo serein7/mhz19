@@ -34,6 +34,9 @@ class Mhz19 : public Module {
     // it seems sensor's internal logic takes co2 measure once per 6 sec
     // so no need to update more often
     const static uint32_t _min_update_interval = 7000;
+
+    // Private methods
+    void readData();
 };
 
 #endif

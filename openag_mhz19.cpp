@@ -36,6 +36,8 @@ void Mhz19::readData() {
   byte response[9];
 
   Serial3.write(cmd, 9);
+  delay(100);
+  Serial3.flush();
   memset(response, 0, 9);
   unsigned long timeout = millis() + READ_TIMEOUT;
   uint8_t inIndex = 0;

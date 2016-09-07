@@ -3,6 +3,7 @@
  *  \brief Sensor module for temperature.
  */
 #include "openag_mhz19.h"
+#define READ_TIMEOUT 5000
 
 Mhz19::Mhz19() {
   status_level = OK;
@@ -13,7 +14,7 @@ Mhz19::Mhz19() {
 
 void Mhz19::begin() {
   Serial3.begin(9600);
-  Serial3.setTimeout(3000);
+  Serial3.setTimeout(READ_TIMEOUT);
 }
 
 void Mhz19::update() {
@@ -36,6 +37,15 @@ void Mhz19::readData() {
 
   Serial3.write(cmd, 9);
   memset(response, 0, 9);
+  // unsigned long timeout = millis() + READ_TIMEOUT;
+  // uint8_t inIndex = 0;
+  // while ( ((int32_t)(millis() - timeout) < 0) && (inIndex < 9) ) {
+  //   if (Serial3.available() > 0) {
+  //       // read the incoming byte:
+  //       inData[inIndex] = Serial3.read();
+  //       inIndex++;
+  //   }
+  // }
   Serial3.readBytes(response, 9);
   int i;
   byte crc = 0;
@@ -45,7 +55,7 @@ void Mhz19::readData() {
   if ( !(response[0] == 0xFF && response[1] == 0x86 && response[8] == crc) ) {
     status_level = ERROR;
     status_msg = "CRC error " + String(crc) + " / "+ String(response[8]) + " :";
-    for (i = 0; i< 9; i++) status_msg = status_msg + String(response[i]);
+    for (i = 0; i< 9; i++) status_msg = status_msg + String(response[i], HEX);
   } else {
     unsigned int responseHigh = (unsigned int) response[2];
     unsigned int responseLow = (unsigned int) response[3];

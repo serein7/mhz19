@@ -4,7 +4,7 @@
  */
 #include "openag_mhz19.h"
 
-Mhz19::Mhz19() : _serial(54, 55) {
+Mhz19::Mhz19() : _serial(A0, A1) {
   status_level = OK;
   status_msg = "";
   _send_air_carbon_dioxide = false;

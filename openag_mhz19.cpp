@@ -27,8 +27,8 @@ void Mhz19::update() {
 
 bool Mhz19::get_air_carbon_dioxide(std_msgs::Int32 &msg) {
   msg.data = _co2_ppm;
-  bool res = _send_co2;
-  _send_co2 = false;
+  bool res = _send_air_carbon_dioxide;
+  _send_air_carbon_dioxide = false;
   return res;
 }
 

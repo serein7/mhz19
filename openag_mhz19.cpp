@@ -12,7 +12,6 @@ Mhz19::Mhz19() : _serial(A0, A1) {
 }
 
 void Mhz19::begin() {
-  Serial.begin(9600);
   _serial.begin(9600);
 }
 
@@ -33,7 +32,8 @@ bool Mhz19::get_air_carbon_dioxide(std_msgs::Int32 &msg) {
 void Mhz19::readData() {
   byte cmd[9] = {0xFF,0x01,0x86,0x00,0x00,0x00,0x00,0x00,0x79};
   unsigned char response[9];
-
+  
+  _serial.begin(9600);
   _serial.write(cmd, 9);
   memset(response, 0, 9);
   _serial.readBytes(response, 9);

@@ -3,7 +3,7 @@
     "class_name": "Mhz19",
     "header_file": "openag_mhz19.h",
     "outputs": {
-        "ait_carbon_dioxide": {
+        "air_carbon_dioxide": {
             "type": "std_msgs/UInt32"
         }
     },

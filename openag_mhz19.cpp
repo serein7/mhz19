@@ -34,7 +34,7 @@ bool Mhz19::get_air_carbon_dioxide(std_msgs::Int32 &msg) {
 
 void Mhz19::readData() {
   byte cmd[9] = {0xFF,0x01,0x86,0x00,0x00,0x00,0x00,0x00,0x79};
-  uint8_t response[9];
+  unsigned char response[9];
 
   _serial.write(cmd, 9);
   memset(response, 0, 9);

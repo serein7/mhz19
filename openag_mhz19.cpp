@@ -55,7 +55,7 @@ void Mhz19::readData() {
   if ( !(response[0] == 0xFF && response[1] == 0x86 && response[8] == crc) ) {
     status_level = ERROR;
     status_msg = "CRC error " + String(crc) + " / "+ String(response[8]) + " => ";
-    for (i = 0; i< 9; i++) status_msg = status_msg + "0x"+String(response[i], HEX) + ","
+    for (i = 0; i< 9; i++) status_msg = status_msg + "0x"+String(response[i], HEX) + ",";
   } else {
     unsigned int responseHigh = (unsigned int) response[2];
     unsigned int responseLow = (unsigned int) response[3];

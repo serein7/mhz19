@@ -9,9 +9,10 @@ Current implementation is hardcoded to read sensor values from Arduino Mega2560 
 
 # Installation
 Add to following records on your CouchDb instance:
-1. To to firmware_module_type database:
 
-{
+To to firmware_module_type database:
+
+>"{
    "_id": "mhz19",
    "description": "",
    "repository": {
@@ -31,12 +32,11 @@ Add to following records on your CouchDb instance:
            "type": "git"
        }
    ]
-}
+}"
 
-2. To firmware_module database:
-
-{
+To firmware_module database: 
+>"{
    "_id": "mhz19_1",
    "environment": "environment_1",
    "type": "mhz19"
-}
+}"

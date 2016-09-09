@@ -6,3 +6,37 @@ Current implementation is hardcoded to read sensor values from Arduino Mega2560 
 
 # Todo
 1. Add arguments to configure interface type (Serial or PWM) and pins the sensor is attached to.
+
+# Installation
+Add to following records on your CouchDb instance:
+1. To to firmware_module_type database:
+
+{
+   "_id": "mhz19",
+   "description": "",
+   "repository": {
+       "url": "https://github.com/serein7/openag_mhz19.git",
+       "type": "git"
+   },
+   "class_name": "Mhz19",
+   "outputs": {
+       "air_carbon_dioxide": {
+           "type": "std_msgs/Int32"
+       }
+   },
+   "header_file": "openag_mhz19.h",
+   "dependencies": [
+       {
+           "url": "https://github.com/OpenAgInitiative/openag_firmware_module.git",
+           "type": "git"
+       }
+   ]
+}
+
+2. To firmware_module database:
+
+{
+   "_id": "mhz19_1",
+   "environment": "environment_1",
+   "type": "mhz19"
+}

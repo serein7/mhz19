@@ -4,6 +4,10 @@ The module defines 1 output, "air_carbon_dioxide" on which reading is sent once 
 
 Current implementation is hardcoded to read sensor values from Arduino Mega2560 Serial2 interface.
 
+# Status Codes
+
+- "31": CRC error
+
 # Todo
 1. Add arguments to configure interface type (Serial or PWM) and pins the sensor is attached to.
 
